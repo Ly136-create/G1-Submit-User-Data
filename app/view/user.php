@@ -1,27 +1,7 @@
-<?php
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullname = $_POST['fullname'];
-    $email    = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm  = $_POST['confirm'];
-
-    if ($password !== $confirm) {
-        $error = "Passwords do not match!";
-    } else {
-        // For demo only (do NOT store plain password in real projects)
-        $success = "Registration successful!";
-    }
-}
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Register</title>
-
-    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -36,36 +16,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="card-body">
 
-                    <?php if (!empty($error)) : ?>
-                        <div class="alert alert-danger">
-                            <?= $error ?>
-                        </div>
-                    <?php endif; ?>
+                    <div id="msg"></div>
 
-                    <?php if (!empty($success)) : ?>
-                        <div class="alert alert-success">
-                            <?= $success ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <form method="POST">
+                    <form id="registerForm">
                         <div class="mb-3">
-                            <label class="form-label">Full Name</label>
+                            <label>Full Name</label>
                             <input type="text" name="fullname" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
+                            <label>Email</label>
                             <input type="email" name="email" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Password</label>
+                            <label>Password</label>
                             <input type="password" name="password" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Confirm Password</label>
+                            <label>Confirm Password</label>
                             <input type="password" name="confirm" class="form-control" required>
                         </div>
 
@@ -80,6 +50,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </div>
-
-</body>
-</html>
